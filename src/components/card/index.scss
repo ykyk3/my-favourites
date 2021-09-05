@@ -1,0 +1,30 @@
+.card {
+    border-radius: 4px;
+    box-shadow:  2px 2px 4px gray;
+    padding: 4px;
+    display: inline-block;
+    box-sizing: border-box;
+
+    width: 100%;
+
+    // @media (prefers-color-scheme: dark) {
+    //     background-color: gray;
+    // }
+
+    &__title {
+        color: black;
+        // @media (prefers-color-scheme: light) {
+        //     color: black;
+        // }
+        // @media (prefers-color-scheme: dark) {
+        //     color: #fff;
+        // }
+    }
+    &:hover {
+        /* background-color: gray; */ 
+    }
+
+    &--anchor {
+        text-decoration: none;
+    }
+}
