@@ -1,12 +1,12 @@
 import { FC } from 'react';
+import './index.scss';
 
 export const Picture: FC<{
     src: string;
     alt?: string;
     caption?: string;
 }> = ({ src, alt = '', caption }) => (
-    <figure>
-        <source className="picture" />
+    <figure className="picture">
         <picture>
             {src ? <source srcSet={src} /> : null}
             <img
@@ -14,6 +14,6 @@ export const Picture: FC<{
                 alt={alt || 'デフォルトの画像'}
             />
         </picture>
-        {caption ? <figcaption>{caption}</figcaption> : null}
+        {caption ? <figcaption className="picture__caption">{caption}</figcaption> : null}
     </figure>
 );
