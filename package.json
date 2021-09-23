@@ -1,5 +1,5 @@
 {
-    "name": "my-features",
+    "name": "my-favorites",
     "version": "0.1.0",
     "private": true,
     "scripts": {
@@ -21,7 +21,9 @@
         "@types/react": "^17.0.0",
         "@types/react-dom": "^17.0.0",
         "classnames": "^2.3.1",
+        "dotenv": "^10.0.0",
         "fastify": "^3.21.1",
+        "node-fetch": "2.6.2",
         "react": "^17.0.2",
         "react-dom": "^17.0.2",
         "react-scripts": "4.0.3",
@@ -36,6 +38,8 @@
         "@storybook/node-logger": "^6.3.8",
         "@storybook/preset-create-react-app": "^3.2.0",
         "@storybook/react": "^6.3.8",
+        "concurrently": "^6.2.1",
+        "nodemon": "^2.0.12",
         "ts-node-dev": "^1.1.8"
     },
     "eslintConfig": {
