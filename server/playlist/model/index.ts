@@ -16,19 +16,19 @@ export interface PlayListRaw {
 export interface PlayList {
     next: string;
     total: number;
-    resultsPerPage: number;
+    page: number;
     items: PlayListItem[];
 }
 export class PlayList implements PlayList {
     next: string;
     total: number;
-    resultsPerPage: number;
+    page: number;
     items: PlayListItem[];
     constructor(raw: PlayListRaw) {
         this.next = raw.nextPageToken;
         const { totalResults: total = 0, resultsPerPage = 0 } = raw.pageInfo;
         this.total = total;
-        this.resultsPerPage = resultsPerPage;
+        this.page = resultsPerPage;
         this.items = raw.items.map((item) => new PlayListItem(item));
     }
 }
