@@ -3,14 +3,15 @@
     "version": "0.1.0",
     "private": true,
     "scripts": {
-        "start": "npx ts-node server/index.tsx",
+        "start": "webpack-dev-server --mode development",
         "dev:watch": "npx ts-node-dev --respawn server/index.tsx",
         "dev": "npx ts-node server/index.tsx",
-        "build": "tsc",
         "test": "react-scripts test",
         "eject": "react-scripts eject",
         "storybook": "start-storybook -p 6006 -s public",
-        "build-storybook": "build-storybook -s public"
+        "build-storybook": "build-storybook -s public",
+        "prebuild": "rimraf dist",
+        "build": "webpack --progress --mode production"
     },
     "dependencies": {
         "@testing-library/jest-dom": "^5.11.4",
@@ -32,15 +33,26 @@
         "web-vitals": "^1.0.1"
     },
     "devDependencies": {
+        "@babel/core": "^7.15.5",
+        "@babel/preset-env": "^7.15.6",
+        "@babel/preset-react": "^7.14.5",
         "@storybook/addon-actions": "^6.3.8",
         "@storybook/addon-essentials": "^6.3.8",
         "@storybook/addon-links": "^6.3.8",
         "@storybook/node-logger": "^6.3.8",
         "@storybook/preset-create-react-app": "^3.2.0",
         "@storybook/react": "^6.3.8",
+        "babel-loader": "^8.2.2",
         "concurrently": "^6.2.1",
+        "css-loader": "^6.3.0",
         "nodemon": "^2.0.12",
-        "ts-node-dev": "^1.1.8"
+        "rimraf": "^3.0.2",
+        "sass-loader": "^12.1.0",
+        "ts-loader": "^9.2.6",
+        "ts-node-dev": "^1.1.8",
+        "webpack": "^5.53.0",
+        "webpack-cli": "^4.8.0",
+        "webpack-dev-server": "^4.2.1"
     },
     "eslintConfig": {
         "extends": [

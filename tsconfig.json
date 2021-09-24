@@ -3,9 +3,9 @@
         "target": "es5",
         "lib": ["dom", "dom.iterable", "esnext"],
         "jsx": "react-jsx",
-        "module": "CommonJS",
+        "module": "esnext",
         "resolveJsonModule": true,
-        "outDir": ".dist",
+        "outDir": "dist",
         "esModuleInterop": true,
         "forceConsistentCasingInFileNames": true,
         "strict": true,
@@ -15,8 +15,7 @@
         "allowSyntheticDefaultImports": true,
         "noFallthroughCasesInSwitch": true,
         "moduleResolution": "node",
-        "isolatedModules": true,
-        "noEmit": true
+        "isolatedModules": true
     },
     "include": ["server", "lib", "client"]
 }

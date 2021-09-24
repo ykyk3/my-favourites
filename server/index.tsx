@@ -1,16 +1,10 @@
-import Fastify, {
-    FastifyInstance,
-    FastifyReply,
-    RouteShorthandOptions,
-} from 'fastify';
-import { Server, IncomingMessage, ServerResponse } from 'http';
-import React, { FC } from 'react';
-import ReactDOM from 'react-dom';
-import ReactDOMServer from 'react-dom/server';
-import App from '../client/App';
+import Fastify, { FastifyInstance, RouteShorthandOptions } from 'fastify';
 import { Logger } from '../lib/logger';
+import { showRoute } from './middleware/show-route';
+import { PlayListRoute } from './playlist/route';
+require('dotenv').config();
 
-const server: FastifyInstance = Fastify({});
+const fastify: FastifyInstance = Fastify({ logger: true });
 
 Logger.info('boot server');
 const opts: RouteShorthandOptions = {
@@ -28,27 +22,23 @@ const opts: RouteShorthandOptions = {
     },
 };
 
-server.get('/health-check', opts, async (request, reply) => {
-    return { status: 'it worked!' };
-});
-
-server.get('/test', opts, async (request, reply: FastifyReply) => {
-    const html = ReactDOMServer.renderToString(
-        <React.StrictMode>
-            <App />
-        </React.StrictMode>
-    );
-    reply.code(200).type('text/html').send(html);
+fastify.register(PlayListRoute, { prefix: '/playlist' });
+fastify.get('/health-check', opts, async (request, reply) => {
+    return reply.code(200).send({ status: 'it worked!' });
 });
 
 const start = async () => {
     try {
-        await server.listen(3000);
-        Logger.info('started: http://localhost:3000');
-        const address = server.server.address();
-        const port = typeof address === 'string' ? address : address?.port;
+        const port = process?.env.PORT || 3000;
+        await fastify.listen(port);
+        const address = fastify.server.address();
+        if (address && typeof address !== 'string') {
+            Logger.info(
+                `started: ${address.address}:${address.port}/${address.family}`
+            );
+        }
     } catch (err) {
-        server.log.error(err);
+        fastify.log.error(err);
         process.exit(1);
     }
 };
