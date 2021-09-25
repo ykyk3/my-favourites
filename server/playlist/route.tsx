@@ -18,9 +18,7 @@ export const PlayListRoute: FastifyPluginCallback = (fastify, opts, done) => {
             channelId: 'UCCrcXTOvcb67zokLsfsYDEA',
             part: ['id', 'snippet', 'status'],
         });
-        // reply.code(200).send(playLists);
-        const html = ReactDOMServer.renderToString(<View>test</View>);
-        reply.code(200).type('text/html').send(html);
+        reply.code(200).send(playLists);
     });
 
     done();
