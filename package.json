@@ -3,6 +3,7 @@
     "version": "0.1.0",
     "private": true,
     "scripts": {
+        "client": "webpack-dev-server --config ./webpack.config.js --open --mode development",
         "start": "webpack-dev-server --mode development",
         "dev:watch": "npx ts-node-dev --respawn server/index.tsx",
         "dev": "npx ts-node server/index.tsx",
@@ -46,6 +47,7 @@
         "babel-loader": "^8.2.2",
         "concurrently": "^6.2.1",
         "css-loader": "^6.3.0",
+        "html-webpack-plugin": "^5.3.2",
         "nodemon": "^2.0.12",
         "rimraf": "^3.0.2",
         "sass-loader": "^12.1.0",

@@ -1,4 +1,9 @@
 const path = require('path');
+const HtmlWebPackPlugin = require('html-webpack-plugin');
+const htmlWebpackPlugin = new HtmlWebPackPlugin({
+    template: './client/index.html',
+    filename: './index.html',
+});
 const config = {
     mode: 'development', // production or development
     entry: './client/index.tsx',
@@ -51,6 +56,7 @@ const config = {
             },
         ],
     },
+    plugins: [htmlWebpackPlugin],
     // module: { // Loader setting See: https://webpack.js.org/concepts/#loaders
     //     rules: [{ test: /\.txt$/, use: 'raw-loader' }],
     // },

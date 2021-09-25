@@ -2,7 +2,7 @@ const devConfig = {
     mode: 'development',
     devServer: {
         historyApiFallback: true,
-        inline: true,
+        // inline: true,
         open: true,
         host: 'localhost',
         port: 8080,
