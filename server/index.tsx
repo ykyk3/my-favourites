@@ -1,10 +1,9 @@
-import Fastify, { FastifyInstance, RouteShorthandOptions } from 'fastify';
+import Fastify, { RouteShorthandOptions } from 'fastify';
 import { Logger } from '../lib/logger';
-import { showRoute } from './middleware/show-route';
 import { PlayListRoute } from './playlist/route';
 require('dotenv').config();
 
-const fastify: FastifyInstance = Fastify({ logger: true });
+const fastify = Fastify({ logger: true });
 
 Logger.info('boot server');
 const opts: RouteShorthandOptions = {
@@ -22,10 +21,12 @@ const opts: RouteShorthandOptions = {
     },
 };
 
-fastify.register(PlayListRoute, { prefix: '/playlist' });
-fastify.get('/health-check', opts, async (request, reply) => {
-    return reply.code(200).send({ status: 'it worked!' });
-});
+// FIXME(#12): api用のrouterファイルに移す（いつか）
+fastify.register(PlayListRoute, { prefix: '/api/playlist' });
+
+fastify.get('/health-check', opts, async (_, reply) =>
+    reply.code(200).send({ status: 'it worked!' })
+);
 
 const start = async () => {
     try {
